@@ -10,12 +10,17 @@ public class Missle : Spell
     public float m_Damage;
     public float m_Speed;
     public float m_Lifetime;
-    public float m_CastRate;
-    float m_LastCastTime;
+
 
     public override void onPress() { }
     public override void onHold() { }
-    public override void onRelease() { }
+    public override void onRelease()
+    {
+        if (Time.time - m_LastCastTime >= m_CastRate)
+        {
+            //Fire Missle
+        }
+    }
     public override void onEquip() { }
     public override void onUnequip() { }
 }

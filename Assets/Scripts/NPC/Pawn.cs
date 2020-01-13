@@ -12,5 +12,7 @@ public class Pawn : MonoBehaviour
     Rigidbody m_Rigidbody;
     Animator m_Animator;
 
-    public void Move(Vector2 direction) { }
+    public void Move(Vector2 direction)
+    {
+    }
 }
