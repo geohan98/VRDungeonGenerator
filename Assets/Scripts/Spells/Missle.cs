@@ -6,20 +6,25 @@ using UnityEngine;
 public class Missle : Spell
 {
     [Header("Missle Attributes")]
-    public GameObject m_Missle;
-    public float m_Damage;
-    public float m_Speed;
-    public float m_Lifetime;
+    public GameObject m_missle;
+    public float m_damage;
+    public float m_speed;
+    public float m_lifetime;
 
 
     public override void onPress() { }
-    public override void onHold() { }
+    public override void onHold()
+    {
+        Debug.Log(m_name + "Hold");
+        if (Time.time - m_lastCastTime >= m_castRate)
+        {
+            GameObject tmp = Instantiate(m_missle, m_origin.position, m_origin.rotation, null);
+            m_lastCastTime = Time.time;
+        }
+    }
     public override void onRelease()
     {
-        if (Time.time - m_LastCastTime >= m_CastRate)
-        {
-            //Fire Missle
-        }
+
     }
     public override void onEquip() { }
     public override void onUnequip() { }
