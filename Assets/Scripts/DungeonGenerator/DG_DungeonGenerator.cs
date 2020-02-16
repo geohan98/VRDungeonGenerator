@@ -9,7 +9,7 @@ public class DG_DungeonGenerator : MonoBehaviour
     public bool m_Debug;
     public int m_NumberOfRooms;
     public Vector2Int m_ConnectionLength;
-    public List<DG_Room> m_RoomPallete;
+    public DG_Palette m_Pallete;
     public int m_RoomPadding = 0;
     public float m_DrawSquareSize = 0.45f;
     public float m_DrawSquareDuration = 10.0f;
@@ -34,42 +34,6 @@ public class DG_DungeonGenerator : MonoBehaviour
     }
     private void Start()
     {
-
-
-        if (!AddRandomSpawnRoom())
-        {
-            LogWarning("Failed To Add Random Spawn Room");
-            return;
-        }
-
-        bool loop = true;
-        while (loop)
-        {
-            if (AddRandomRoom())
-            {
-                m_RoomCount++;
-                m_FailCount = 0;
-            }
-            else
-            {
-                m_FailCount++;
-            }
-
-
-            if (m_FailCount >= m_MaxFails)
-            {
-                LogWarning("Max Fails Reached");
-                loop = false;
-            }
-
-            if (m_RoomCount >= m_NumberOfRooms)
-            {
-                Log("All Rooms Added");
-                loop = false;
-            }
-        }
-
-        DebugCells();
     }
     private void Update()
     {
@@ -109,16 +73,74 @@ public class DG_DungeonGenerator : MonoBehaviour
         }
     }
     public void DebugConnections() { }
-    public void GenerateDungeon() { }
-    public void BuildDunegon() { }
+    public void GenerateDungeon()
+    {
+        if (m_Pallete == null)
+        {
+            return;
+        }
+
+        if (!AddRandomSpawnRoom())
+        {
+            LogWarning("Failed To Add Random Spawn Room");
+            return;
+        }
+
+        bool loop = true;
+        while (loop)
+        {
+            if (AddRandomRoom())
+            {
+                m_RoomCount++;
+                m_FailCount = 0;
+            }
+            else
+            {
+                m_FailCount++;
+            }
+
+
+            if (m_FailCount >= m_MaxFails)
+            {
+                LogWarning("Max Fails Reached");
+                loop = false;
+            }
+
+            if (m_RoomCount >= m_NumberOfRooms)
+            {
+                Log("All Rooms Added");
+                loop = false;
+            }
+        }
+    }
+    public void BuildDunegon()
+    {
+        BuildRoomMeshes();
+        BuildConnectionMeshes();
+    }
+    public void ClearDungeonData()
+    {
+        m_Cells = new Dictionary<Vector2Int, DG_CellType>();
+        m_RoomInstances = new List<DG_RoomInstance>();
+        m_Connections = new List<DG_Connection>();
+        m_RoomCount = 0;
+        m_FailCount = 0;
+    }
+    public void ClearDungeonMeshes()
+    {
+        while (transform.childCount != 0)
+        {
+            DestroyImmediate(transform.GetChild(0).gameObject);
+        }
+    }
     #endregion
 
     #region Private Functions
     private bool AddRandomRoom()
     {
-        if (m_RoomPallete.Count < 1)
+        if (m_Pallete.m_Rooms.Count < 1)
         {
-            LogWarning("No Rooms In Pallete");
+            LogWarning("No Rooms In Palette");
             return false;
         }
         if (m_RoomInstances.Count < 1)
@@ -144,7 +166,7 @@ public class DG_DungeonGenerator : MonoBehaviour
             return false;
         }
         DG_Door exitDoor = startRoomData.m_Doors[RandomNumberInRange(startRoomData.m_Doors.Count)];
-        DG_Room newRoom = m_RoomPallete[RandomNumberInRange(m_RoomPallete.Count)];
+        DG_Room newRoom = m_Pallete.m_Rooms[RandomNumberInRange(m_Pallete.m_Rooms.Count)];
         if (newRoom.m_Doors.Count < 0)
         {
             LogWarning("New Room Has No Doors");
@@ -178,13 +200,13 @@ public class DG_DungeonGenerator : MonoBehaviour
     }
     private bool AddRandomSpawnRoom()
     {
-        if (m_RoomPallete.Count < 1)
+        if (m_Pallete.m_Rooms.Count < 1)
         {
             LogWarning("No Rooms In Pallete");
             return false;
         }
 
-        AddRoomToDungeonData(m_RoomPallete[RandomNumberInRange(m_RoomPallete.Count)], Vector2Int.zero);
+        AddRoomToDungeonData(m_Pallete.m_Rooms[RandomNumberInRange(m_Pallete.m_Rooms.Count)], Vector2Int.zero);
         m_RoomCount++;
         Log("Spawn Room Added To Dungeon Data");
         return true;
@@ -232,6 +254,33 @@ public class DG_DungeonGenerator : MonoBehaviour
                 {
                     m_Cells[new Vector2Int(i, j)] = DG_CellType.Connection;
                 }
+            }
+        }
+    }
+    private void BuildRoomMeshes()
+    {
+        foreach (DG_RoomInstance roomInstance in m_RoomInstances)
+        {
+            if (roomInstance.m_Room.m_Prefab != null)
+            {
+                Instantiate(roomInstance.m_Room.m_Prefab, GridToWorldAxis(roomInstance.m_Position), Quaternion.Euler(Vector3.zero), transform);
+            }
+        }
+    }
+    private void BuildConnectionMeshes()
+    {
+        if (m_Pallete.m_ConnectionPrefab == null)
+        {
+            return;
+        }
+
+        Log("Building Connections");
+        foreach (DG_Connection connection in m_Connections)
+        {
+            Log(connection.m_Length.ToString());
+            for (int i = 0; i <= connection.m_Length; i++)
+            {
+                Instantiate(m_Pallete.m_ConnectionPrefab, GridToWorldAxis(connection.m_StartPosition + i * DirectionToVector(connection.m_Direction)), Quaternion.Euler(DirectionToEulerRotation(connection.m_Direction)), transform);
             }
         }
     }
@@ -329,6 +378,26 @@ public class DG_DungeonGenerator : MonoBehaviour
         }
 
         return direction;
+    }
+    Vector3 GridToWorldAxis(Vector2Int _gridPosition)
+    {
+        return new Vector3(_gridPosition.x, 0, _gridPosition.y);
+    }
+    float DirectionToZRotation(DG_Direction _Direction)
+    {
+        if (_Direction == DG_Direction.East || _Direction == DG_Direction.West)
+        {
+            return 90;
+        }
+        return 0;
+    }
+    Vector3 DirectionToEulerRotation(DG_Direction _Direction)
+    {
+        if (_Direction == DG_Direction.East || _Direction == DG_Direction.West)
+        {
+            return new Vector3(0, 90, 0);
+        }
+        return Vector3.zero;
     }
     private void Log(string _msg)
     {

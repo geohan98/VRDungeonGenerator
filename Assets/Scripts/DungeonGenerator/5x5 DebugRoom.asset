@@ -38,4 +38,5 @@ MonoBehaviour:
     m_Direction: 4
   - m_Position: {x: -2, y: -1}
     m_Direction: 4
-  m_Prefab: {fileID: 0}
+  m_Prefab: {fileID: 8039532051589459661, guid: 70b75e64219e9224a8c3d5067c5314b1,
+    type: 3}
