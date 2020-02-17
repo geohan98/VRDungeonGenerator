@@ -16,6 +16,8 @@ public class DG_RoomVolume : MonoBehaviour
 
     public List<GameObject> CompileObjectsInsideBounds()
     {
+        m_instance = new DG_Room();
+
         Bounds bounds = new Bounds(transform.position + new Vector3(m_Size.x / 2.0f, m_Size.y / 2.0f, m_Size.z / 2.0f), new Vector3(m_Size.x, m_Size.y, m_Size.z));
 
         List<GameObject> objects = new List<GameObject>();
@@ -24,7 +26,7 @@ public class DG_RoomVolume : MonoBehaviour
 
         foreach (GameObject item in allObjects)
         {
-            if (bounds.Contains(item.transform.position) && !item.GetComponent<DG_RoomVolume>())
+            if (bounds.Contains(item.transform.position) && item.GetComponent<DG_DoorVolume>())
             {
                 Log("Found GameObject: " + item.name);
                 objects.Add(item);
