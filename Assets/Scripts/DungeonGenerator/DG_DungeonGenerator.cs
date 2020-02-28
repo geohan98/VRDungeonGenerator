@@ -80,6 +80,12 @@ public class DG_DungeonGenerator : MonoBehaviour
             return;
         }
 
+        if (m_NumberOfRooms == 0)
+        {
+            LogWarning("Room Count Is Zero");
+            return;
+        }
+
         if (!AddRandomSpawnRoom())
         {
             LogWarning("Failed To Add Random Spawn Room");
@@ -89,6 +95,20 @@ public class DG_DungeonGenerator : MonoBehaviour
         bool loop = true;
         while (loop)
         {
+            if (m_FailCount >= m_MaxFails)
+            {
+                LogWarning("Max Fails Reached");
+                loop = false;
+                break;
+            }
+
+            if (m_RoomCount >= m_NumberOfRooms)
+            {
+                Log("All Rooms Added");
+                loop = false;
+                break;
+            }
+
             if (AddRandomRoom())
             {
                 m_RoomCount++;
@@ -97,19 +117,6 @@ public class DG_DungeonGenerator : MonoBehaviour
             else
             {
                 m_FailCount++;
-            }
-
-
-            if (m_FailCount >= m_MaxFails)
-            {
-                LogWarning("Max Fails Reached");
-                loop = false;
-            }
-
-            if (m_RoomCount >= m_NumberOfRooms)
-            {
-                Log("All Rooms Added");
-                loop = false;
             }
         }
     }
@@ -182,9 +189,26 @@ public class DG_DungeonGenerator : MonoBehaviour
         DG_Door entryDoor = potentialDoors[RandomNumberInRange(potentialDoors.Count)];
 
         int connectionLength = RandomNumberInRange(m_ConnectionLength.y, m_ConnectionLength.x);
-        Vector2Int connectionStart = startRoomInstance.m_Position + exitDoor.m_Position + DirectionToVector(exitDoor.m_Direction);
-        Vector2Int connectionEnd = connectionStart + DirectionToVector(exitDoor.m_Direction) * connectionLength;
-        Vector2Int newRoomLocation = connectionEnd + DirectionToVector(exitDoor.m_Direction) - entryDoor.m_Position;
+
+        Vector2Int connectionStart = Vector2Int.zero, connectionEnd = Vector2Int.zero, newRoomLocation = Vector2Int.zero;
+
+        if (connectionLength > 1)
+        {
+            connectionStart = startRoomInstance.m_Position + exitDoor.m_Position + DirectionToVector(exitDoor.m_Direction);
+            connectionEnd = connectionStart + DirectionToVector(exitDoor.m_Direction) * connectionLength;
+            newRoomLocation = connectionEnd + DirectionToVector(exitDoor.m_Direction) - entryDoor.m_Position;
+        }
+        else if (connectionLength == 1)
+        {
+            connectionStart = startRoomInstance.m_Position + exitDoor.m_Position + DirectionToVector(exitDoor.m_Direction);
+            connectionEnd = connectionStart;
+            newRoomLocation = connectionEnd + DirectionToVector(exitDoor.m_Direction) - entryDoor.m_Position;
+        }
+        else if (connectionLength == 0)
+        {
+            newRoomLocation = startRoomInstance.m_Position + exitDoor.m_Position + DirectionToVector(exitDoor.m_Direction) - entryDoor.m_Position;
+        }
+
 
         if (!CheckRoomOverlap(newRoom, newRoomLocation))
         {
@@ -192,7 +216,12 @@ public class DG_DungeonGenerator : MonoBehaviour
             AddRoomToDungeonData(newRoom, newRoomLocation);
             startRoomInstance.m_ConnectedDoors.Add(exitDoor);
             m_RoomInstances[m_RoomInstances.Count - 1].m_ConnectedDoors.Add(entryDoor);
-            AddConnectionToDungeonData(connectionStart, exitDoor.m_Direction, connectionLength);
+
+            if (connectionLength > 0)
+            {
+                AddConnectionToDungeonData(connectionStart, exitDoor.m_Direction, connectionLength);
+            }
+
             return true;
         }
 
@@ -235,6 +264,12 @@ public class DG_DungeonGenerator : MonoBehaviour
     private void AddConnectionToDungeonData(Vector2Int _StartPosition, DG_Direction _Direction, int _Length)
     {
         m_Connections.Add(new DG_Connection(_StartPosition, _Direction, _Length));
+
+        if (_Length == 1)
+        {
+            m_Cells[_StartPosition] = DG_CellType.Connection;
+            return;
+        }
 
         if (_Direction == DG_Direction.North || _Direction == DG_Direction.East)
         {
