@@ -11,12 +11,14 @@ public class DG_RoomVolume : MonoBehaviour
 
     #region Private Variables
     private List<DG_Door> m_Doors;
+    private List<Vector2Int> m_EmptyCells;
     #endregion
 
     #region Public Functions
     public void UpdateRoomData()
     {
         m_Doors = new List<DG_Door>();
+        m_EmptyCells = new List<Vector2Int>();
 
         Bounds bounds = new Bounds(transform.position + Vector3.up * 0.5f, new Vector3(m_Size.x, 1.0f, m_Size.y));
 
@@ -26,7 +28,17 @@ public class DG_RoomVolume : MonoBehaviour
         {
             if (bounds.Contains(door.transform.position))
             {
-                m_Doors.Add(new DG_Door(DoorWorldPositionToRelativeGridPosition(door), DoorToDirection(door)));
+                m_Doors.Add(new DG_Door(WorldPositionToRelativeGridPosition(door.transform.position), DoorToDirection(door)));
+            }
+        }
+
+        DG_EmptyCell[] emptyCells = FindObjectsOfType<DG_EmptyCell>();
+
+        foreach (DG_EmptyCell cell in emptyCells)
+        {
+            if (bounds.Contains(cell.transform.position))
+            {
+                m_EmptyCells.Add(WorldPositionToRelativeGridPosition(cell.transform.position));
             }
         }
     }
@@ -36,6 +48,7 @@ public class DG_RoomVolume : MonoBehaviour
         DG_Room room = new DG_Room();
         room.m_Size = new Vector2Int(m_Size.x, m_Size.y);
         room.m_Doors = m_Doors;
+        room.m_EmptyCells = m_EmptyCells;
         return room;
     }
     #endregion
@@ -62,9 +75,9 @@ public class DG_RoomVolume : MonoBehaviour
         LogWarning("Door Not Aligned" + _door.ToString());
         return DG_Direction.None;
     }
-    private Vector2Int DoorWorldPositionToRelativeGridPosition(DG_DoorVolume _Door)
+    private Vector2Int WorldPositionToRelativeGridPosition(Vector3 _position)
     {
-        Vector3 relativeWorldPosition = _Door.transform.position - transform.position;
+        Vector3 relativeWorldPosition = _position - transform.position;
         return new Vector2Int(Mathf.RoundToInt(relativeWorldPosition.x), Mathf.RoundToInt(relativeWorldPosition.z));
     }
     private void OnDrawGizmos()

@@ -151,12 +151,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Seed: 0
-  m_Seeded: 0
+  m_Seeded: 1
   m_Debug: 1
-  m_NumberOfRooms: 10
-  m_ConnectionLength: {x: 0, y: 5}
-  m_Pallete: {fileID: 11400000, guid: a350c3cf2c062964ba2020b377373d32, type: 2}
-  m_RoomPadding: 0
+  m_NumberOfRooms: 50
+  m_ConnectionLength: {x: 2, y: 3}
+  m_Pallete: {fileID: 11400000, guid: 8b8c96b6d1e6c8c4280f7403e96a8492, type: 2}
+  m_RoomPadding: 1
   m_DrawSquareSize: 0.45
   m_DrawSquareDuration: 0
   m_MaxFails: 500

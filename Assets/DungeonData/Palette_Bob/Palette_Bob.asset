@@ -10,8 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3588f19ebb6c58d46a25a9a249ba7d04, type: 3}
-  m_Name: Palette_Test
+  m_Name: Palette_Bob
   m_EditorClassIdentifier: 
   m_Rooms:
-  - {fileID: 11400000, guid: e518d0f6ffc1e22409fa520b01db2b9e, type: 2}
+  - {fileID: 11400000, guid: 30e0ee689b5e82f49952b46f1b1487fd, type: 2}
+  - {fileID: 11400000, guid: 7633b39ca3c3134438a70c674f69b400, type: 2}
+  - {fileID: 11400000, guid: 45b0d446e16dd8c4581b802cc995d119, type: 2}
+  - {fileID: 11400000, guid: 9b13900b044598e42aa1bb51c3b09dd0, type: 2}
+  - {fileID: 11400000, guid: 9c022f5e5f66470409eb58e500fad039, type: 2}
   m_ConnectionPrefab: {fileID: 0}

@@ -255,6 +255,11 @@ public class DG_DungeonGenerator : MonoBehaviour
             m_Cells[new Vector2Int(_Position.x + door.m_Position.x, _Position.y + door.m_Position.y)] = DG_CellType.Door;
         }
 
+        foreach (Vector2Int cell in _Room.m_EmptyCells)
+        {
+            m_Cells.Remove(new Vector2Int(_Position.x + cell.x, _Position.y + cell.y));
+        }
+
         DG_RoomInstance tmp = new DG_RoomInstance();
         tmp.m_ConnectedDoors = new List<DG_Door>();
         tmp.m_Position = _Position;
