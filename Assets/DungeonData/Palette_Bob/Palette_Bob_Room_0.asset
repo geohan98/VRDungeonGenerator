@@ -12,31 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c9a9de4fa37c042b15c0d0dad77545, type: 3}
   m_Name: Palette_Bob_Room_0
   m_EditorClassIdentifier: 
-  m_Size: {x: 7, y: 7}
+  m_Size: {x: 5, y: 5}
   m_Doors:
-  - m_Position: {x: 3, y: 0}
+  - m_Position: {x: 2, y: -1}
     m_Direction: 2
-  - m_Position: {x: -3, y: 0}
-    m_Direction: 4
-  - m_Position: {x: 0, y: -3}
+  - m_Position: {x: -1, y: -2}
     m_Direction: 3
-  - m_Position: {x: 0, y: 3}
+  - m_Position: {x: 0, y: -2}
+    m_Direction: 3
+  - m_Position: {x: 1, y: -2}
+    m_Direction: 3
+  - m_Position: {x: -2, y: -1}
+    m_Direction: 4
+  - m_Position: {x: -2, y: 0}
+    m_Direction: 4
+  - m_Position: {x: -2, y: 1}
+    m_Direction: 4
+  - m_Position: {x: -1, y: 2}
     m_Direction: 1
   m_EmptyCells:
-  - {x: -3, y: 2}
-  - {x: -3, y: 3}
-  - {x: -2, y: 3}
-  - {x: -2, y: 2}
-  - {x: 3, y: 2}
-  - {x: 3, y: 3}
-  - {x: 2, y: 3}
   - {x: 2, y: 2}
-  - {x: 2, y: -3}
-  - {x: 2, y: -2}
-  - {x: 3, y: -2}
-  - {x: 3, y: -3}
-  - {x: -2, y: -3}
-  - {x: -2, y: -2}
-  - {x: -3, y: -2}
-  - {x: -3, y: -3}
+  - {x: 1, y: 2}
+  - {x: 2, y: 1}
+  - {x: 1, y: 1}
   m_Prefab: {fileID: 0}

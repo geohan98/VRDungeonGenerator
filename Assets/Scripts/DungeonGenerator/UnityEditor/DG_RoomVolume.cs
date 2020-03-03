@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class DG_RoomVolume : MonoBehaviour
 {
@@ -50,6 +51,26 @@ public class DG_RoomVolume : MonoBehaviour
         room.m_Doors = m_Doors;
         room.m_EmptyCells = m_EmptyCells;
         return room;
+    }
+
+    public List<Transform> GetRoomGameObjects()
+    {
+        List<Transform> transforms = new List<Transform>();
+        Bounds bounds = new Bounds(transform.position + Vector3.up * 0.5f, new Vector3(m_Size.x, 1.0f, m_Size.y));
+
+        GameObject[] AllGameObjects = EditorSceneManager.GetActiveScene().GetRootGameObjects();
+
+        foreach (GameObject gameObject in AllGameObjects)
+        {
+            if (bounds.Contains(gameObject.transform.position))
+            {
+                if (!(gameObject.GetComponent<DG_RoomVolume>() || gameObject.GetComponent<DG_DoorVolume>() || gameObject.GetComponent<DG_EmptyCell>()))
+                {
+                    transforms.Add(gameObject.transform);
+                }
+            }
+        }
+        return transforms;
     }
     #endregion
 

@@ -45,6 +45,7 @@ public class DG_PaletteDesignerWindow : EditorWindow
         if (GUILayout.Button("Save Palette", GUILayout.ExpandWidth(false)))
         {
             DG_Palette palette = (DG_Palette)AssetDatabase.LoadAssetAtPath("Assets/DungeonData/" + EditorSceneManager.GetActiveScene().name + "/" + EditorSceneManager.GetActiveScene().name + ".asset", typeof(DG_Palette));
+            palette.m_Rooms = new List<DG_Room>();
             EditorUtility.SetDirty(palette);
 
             List<DG_RoomVolume> rooms = GetAllRooms();
@@ -52,11 +53,27 @@ public class DG_PaletteDesignerWindow : EditorWindow
             for (int i = 0; i < rooms.Count; i++)
             {
                 AssetDatabase.CreateAsset(rooms[i].GetRoomData(), "Assets/DungeonData/" + EditorSceneManager.GetActiveScene().name + "/" + EditorSceneManager.GetActiveScene().name + "_Room_" + i + ".asset");
-                if (i == 0) palette.m_Rooms = new List<DG_Room>();
-                palette.m_Rooms.Add((DG_Room)AssetDatabase.LoadAssetAtPath("Assets/DungeonData/" + EditorSceneManager.GetActiveScene().name + "/" + EditorSceneManager.GetActiveScene().name + "_Room_" + i + ".asset", typeof(DG_Room)));
-            }
+                DG_Room active = (DG_Room)AssetDatabase.LoadAssetAtPath("Assets/DungeonData/" + EditorSceneManager.GetActiveScene().name + "/" + EditorSceneManager.GetActiveScene().name + "_Room_" + i + ".asset", typeof(DG_Room));
+                EditorUtility.SetDirty(active);
 
-            AssetDatabase.SaveAssets();
+                palette.m_Rooms.Add(active);
+
+                GameObject gameObject = new GameObject();
+                foreach (Transform transform in rooms[i].GetRoomGameObjects())
+                {
+                    if (transform.gameObject != gameObject)
+                    {
+                        Transform tmp = Instantiate(transform, gameObject.transform);
+                        tmp.position -= rooms[i].transform.position;
+                    }
+                }
+
+                GameObject prefab = PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/DungeonData/" + EditorSceneManager.GetActiveScene().name + "/" + EditorSceneManager.GetActiveScene().name + "_Room_Prefab_" + i + ".prefab");
+                DestroyImmediate(gameObject);
+
+                active.m_Prefab = prefab;
+                AssetDatabase.SaveAssets();
+            }
         }
 
         GUILayout.Space(5.0f);
