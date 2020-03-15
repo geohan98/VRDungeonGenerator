@@ -12,28 +12,23 @@ public class DG_DungeonGeneratorEditor : Editor
 
         Handles.DrawLine(Vector3.zero, Vector3.up * 5);
 
-        if (GUILayout.Button("Build New Dungeon"))
+        if (GUILayout.Button("Build Dungeon"))
         {
             myTarget.ClearDungeonData();
             myTarget.ClearDungeonMeshes();
             myTarget.GenerateDungeon();
             myTarget.BuildDunegon();
-            myTarget.DebugCells();
         }
 
-        if (GUILayout.Button("Generate New Dungeon"))
+        if (GUILayout.Button("Build Dungeon Layout"))
         {
             myTarget.ClearDungeonData();
+            myTarget.ClearDungeonMeshes(); ;
             myTarget.GenerateDungeon();
             myTarget.DebugCells();
         }
 
-        if (GUILayout.Button("Generate Dungeon Layout"))
-        {
-            myTarget.GenerateDungeon();
-        }
-
-        if (GUILayout.Button("Clear Dungeon"))
+        if (GUILayout.Button("Clear Dungeon Data & Meshes"))
         {
             myTarget.ClearDungeonData();
             myTarget.ClearDungeonMeshes();

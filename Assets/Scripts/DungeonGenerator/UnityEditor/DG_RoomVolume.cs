@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 
+[SelectionBase]
 public class DG_RoomVolume : MonoBehaviour
 {
     #region Public Variables

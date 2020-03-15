@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[SelectionBase]
 public class DG_DoorVolume : MonoBehaviour
 {
     private void OnDrawGizmos()

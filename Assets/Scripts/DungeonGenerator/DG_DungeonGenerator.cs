@@ -12,7 +12,6 @@ public class DG_DungeonGenerator : MonoBehaviour
     public DG_Palette m_Pallete;
     public int m_RoomPadding = 0;
     public float m_DrawSquareSize = 0.45f;
-    public float m_DrawSquareDuration = 10.0f;
     public int m_MaxFails = 100;
     #endregion
 
@@ -212,6 +211,11 @@ public class DG_DungeonGenerator : MonoBehaviour
 
         if (!CheckRoomOverlap(newRoom, newRoomLocation))
         {
+            if (CheckConnectionOverlap(connectionStart, exitDoor.m_Direction, connectionLength))
+            {
+                Log("Found Connection Overlap!");
+                return false;
+            }
             Log("Added Room");
             AddRoomToDungeonData(newRoom, newRoomLocation);
             startRoomInstance.m_ConnectedDoors.Add(exitDoor);
@@ -317,10 +321,16 @@ public class DG_DungeonGenerator : MonoBehaviour
         Log("Building Connections");
         foreach (DG_Connection connection in m_Connections)
         {
-            Log(connection.m_Length.ToString());
-            for (int i = 0; i <= connection.m_Length; i++)
+            if (connection.m_Length == 1)
             {
-                Instantiate(m_Pallete.m_ConnectionPrefab, GridToWorldAxis(connection.m_StartPosition + i * DirectionToVector(connection.m_Direction)), Quaternion.Euler(DirectionToEulerRotation(connection.m_Direction)), transform);
+                Instantiate(m_Pallete.m_ConnectionPrefab, GridToWorldAxis(connection.m_StartPosition), Quaternion.Euler(DirectionToEulerRotation(connection.m_Direction)), transform);
+            }
+            else
+            {
+                for (int i = 0; i <= connection.m_Length; i++)
+                {
+                    Instantiate(m_Pallete.m_ConnectionPrefab, GridToWorldAxis(connection.m_StartPosition + i * DirectionToVector(connection.m_Direction)), Quaternion.Euler(DirectionToEulerRotation(connection.m_Direction)), transform);
+                }
             }
         }
     }
@@ -340,16 +350,53 @@ public class DG_DungeonGenerator : MonoBehaviour
         }
         return false;
     }
+    private bool CheckConnectionOverlap(Vector2Int _StartPosition, DG_Direction _Direction, int _Length)
+    {
+        Log(_StartPosition.ToString());
+        if (_Length == 1)
+        {
+            return m_Cells.ContainsKey(_StartPosition);
+        }
+
+        if (_Direction == DG_Direction.North || _Direction == DG_Direction.East)
+        {
+            for (int i = _StartPosition.x; i <= _StartPosition.x + (DirectionToVector(_Direction).x * _Length); i++)
+            {
+                for (int j = _StartPosition.y; j <= _StartPosition.y + (DirectionToVector(_Direction).y * _Length); j++)
+                {
+                    if (m_Cells.ContainsKey(new Vector2Int(i, j)))
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for (int i = _StartPosition.x; i >= _StartPosition.x + (DirectionToVector(_Direction).x * _Length); i--)
+            {
+                for (int j = _StartPosition.y; j >= _StartPosition.y + (DirectionToVector(_Direction).y * _Length); j--)
+                {
+                    if (m_Cells.ContainsKey(new Vector2Int(i, j)))
+                    {
+                        return true;
+                    }
+
+                }
+            }
+        }
+        return false;
+    }
     private void DrawSquare(Vector2Int _Position, Vector2Int _Size, Color _Color)
     {
         //Top
-        Debug.DrawLine(new Vector3(_Position.x, 0, _Position.y) + new Vector3(-_Size.x, 0, _Size.y) * m_DrawSquareSize, new Vector3(_Position.x, 0, _Position.y) + new Vector3(_Size.x, 0, _Size.y) * m_DrawSquareSize, _Color, m_DrawSquareDuration);
+        Debug.DrawLine(new Vector3(_Position.x, 0, _Position.y) + new Vector3(-_Size.x, 0, _Size.y) * m_DrawSquareSize, new Vector3(_Position.x, 0, _Position.y) + new Vector3(_Size.x, 0, _Size.y) * m_DrawSquareSize, _Color, 0);
         //Bottom
-        Debug.DrawLine(new Vector3(_Position.x, 0, _Position.y) + new Vector3(-_Size.x, 0, -_Size.y) * m_DrawSquareSize, new Vector3(_Position.x, 0, _Position.y) + new Vector3(_Size.x, 0, -_Size.y) * m_DrawSquareSize, _Color, m_DrawSquareDuration);
+        Debug.DrawLine(new Vector3(_Position.x, 0, _Position.y) + new Vector3(-_Size.x, 0, -_Size.y) * m_DrawSquareSize, new Vector3(_Position.x, 0, _Position.y) + new Vector3(_Size.x, 0, -_Size.y) * m_DrawSquareSize, _Color, 0);
         //Left
-        Debug.DrawLine(new Vector3(_Position.x, 0, _Position.y) + new Vector3(-_Size.x, 0, _Size.y) * m_DrawSquareSize, new Vector3(_Position.x, 0, _Position.y) + new Vector3(-_Size.x, 0, -_Size.y) * m_DrawSquareSize, _Color, m_DrawSquareDuration);
+        Debug.DrawLine(new Vector3(_Position.x, 0, _Position.y) + new Vector3(-_Size.x, 0, _Size.y) * m_DrawSquareSize, new Vector3(_Position.x, 0, _Position.y) + new Vector3(-_Size.x, 0, -_Size.y) * m_DrawSquareSize, _Color, 0);
         //Right
-        Debug.DrawLine(new Vector3(_Position.x, 0, _Position.y) + new Vector3(_Size.x, 0, _Size.y) * m_DrawSquareSize, new Vector3(_Position.x, 0, _Position.y) + new Vector3(_Size.x, 0, -_Size.y) * m_DrawSquareSize, _Color, m_DrawSquareDuration);
+        Debug.DrawLine(new Vector3(_Position.x, 0, _Position.y) + new Vector3(_Size.x, 0, _Size.y) * m_DrawSquareSize, new Vector3(_Position.x, 0, _Position.y) + new Vector3(_Size.x, 0, -_Size.y) * m_DrawSquareSize, _Color, 0);
     }
     int RandomNumberInRange(int max, int min = 0)
     {
