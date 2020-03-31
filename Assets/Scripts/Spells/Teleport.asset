@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0c9dec327f3a84d971ace7e7ca5db9, type: 3}
+  m_Name: Teleport
+  m_EditorClassIdentifier: 
+  m_name: Teleport
+  m_sprite: {fileID: 0}
+  m_description: 
+  m_castRate: 0
+  m_castSound: {fileID: 0}
+  m_failSound: {fileID: 0}
+  m_ActivateSound: {fileID: 0}
+  m_Range: 10
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  m_TargetPrefab: {fileID: 2806763432631815192, guid: 5a5ad440ace2c2647b7c4a891e18c63c,
+    type: 3}
+  m_TrapPrefab: {fileID: 2486803503095937869, guid: 22105df7847bc4743b00f564cd8dbe5c,
+    type: 3}
+  m_Debug: 0

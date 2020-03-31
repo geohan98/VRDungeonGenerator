@@ -6,7 +6,7 @@ public class TrapObject : MonoBehaviour
 {
     public void Activate()
     {
-        SpellManager.m_player.transform.position = transform.position;
-        //Destroy(gameObject);
+        InputManager.s_Instance.gameObject.transform.position = transform.position;
+        Destroy(gameObject);
     }
 }

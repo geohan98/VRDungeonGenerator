@@ -9,6 +9,9 @@ public class Spell : ScriptableObject
     public Texture2D m_sprite;
     public string m_description;
     public float m_castRate;
+    public AudioClip m_castSound;
+    public AudioClip m_failSound;
+    public AudioClip m_ActivateSound;
     protected float m_lastCastTime;
     protected Transform m_origin;
 

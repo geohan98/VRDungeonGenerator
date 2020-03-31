@@ -19,8 +19,6 @@ namespace Valve.VR
         
         private static SteamVR_Input_ActionSet_default p__default;
         
-        private static SteamVR_Input_ActionSet_Development_Project p_Development_Project;
-        
         public static SteamVR_Input_ActionSet_default _default
         {
             get
@@ -29,21 +27,11 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Input_ActionSet_Development_Project Development_Project
-        {
-            get
-            {
-                return SteamVR_Actions.p_Development_Project.GetCopy<SteamVR_Input_ActionSet_Development_Project>();
-            }
-        }
-        
         private static void StartPreInitActionSets()
         {
             SteamVR_Actions.p__default = ((SteamVR_Input_ActionSet_default)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_default>("/actions/default")));
-            SteamVR_Actions.p_Development_Project = ((SteamVR_Input_ActionSet_Development_Project)(SteamVR_ActionSet.Create<SteamVR_Input_ActionSet_Development_Project>("/actions/Development_Project")));
             Valve.VR.SteamVR_Input.actionSets = new Valve.VR.SteamVR_ActionSet[] {
-                    SteamVR_Actions._default,
-                    SteamVR_Actions.Development_Project};
+                    SteamVR_Actions._default};
         }
     }
 }

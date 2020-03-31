@@ -16,15 +16,15 @@ public class Missle : Spell
     public override void onHold()
     {
         Debug.Log(m_name + "Hold");
+
+    }
+    public override void onRelease()
+    {
         if (Time.time - m_lastCastTime >= m_castRate)
         {
             GameObject tmp = Instantiate(m_missle, m_origin.position, m_origin.rotation, null);
             m_lastCastTime = Time.time;
         }
-    }
-    public override void onRelease()
-    {
-
     }
     public override void onEquip() { }
     public override void onUnequip() { }
