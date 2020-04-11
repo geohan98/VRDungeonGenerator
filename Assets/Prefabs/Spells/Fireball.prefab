@@ -80,9 +80,8 @@ MonoBehaviour:
   m_Range: 10
   m_Gravity: 0
   m_AlignWithVelocity: 0
-  m_HitParticle: {fileID: 5644048108978127229, guid: d59282bbb75b93847acbc767951d1bb5,
-    type: 3}
-  m_Debug: 1
+  m_HitParticle: {fileID: 0}
+  m_Debug: 0
 --- !u!2083052967 &4974998737221516224
 VisualEffect:
   m_ObjectHideFlags: 0

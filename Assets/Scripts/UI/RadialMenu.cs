@@ -18,6 +18,8 @@ public class RadialMenu : MonoBehaviour
     public UnityEvent m_Right = new UnityEvent(); //0
     public UnityEvent m_Bottom = new UnityEvent(); //3
     public UnityEvent m_Left = new UnityEvent(); //2
+    [Header("Feedback")]
+    public AudioClip m_ChangeSound;
     #endregion
 
     #region Private Variables
@@ -49,6 +51,7 @@ public class RadialMenu : MonoBehaviour
             }
             if (InputManager.s_Instance.m_touchpadPressUpLeft)
             {
+                PlayerManager.s_Instance.PlaySoundOneShot(m_ChangeSound);
                 switch (m_lastIndex)
                 {
                     case 0:
@@ -87,6 +90,7 @@ public class RadialMenu : MonoBehaviour
             }
             if (InputManager.s_Instance.m_touchpadPressUpRight)
             {
+                PlayerManager.s_Instance.PlaySoundOneShot(m_ChangeSound);
                 switch (m_lastIndex)
                 {
                     case 0:

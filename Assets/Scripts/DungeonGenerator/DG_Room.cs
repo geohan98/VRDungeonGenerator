@@ -9,4 +9,5 @@ public class DG_Room : ScriptableObject
     public List<DG_Door> m_Doors;
     public List<Vector2Int> m_EmptyCells;
     public GameObject m_Prefab;
+    public List<GameObject> m_DoorPrefabs;
 }

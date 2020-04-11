@@ -12,15 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d675bf04745e4594796d9862f4bffc72, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  m_name: FireBall
-  m_sprite: {fileID: 0}
-  m_description: 
   m_castRate: 0
-  m_castSound: {fileID: 0}
-  m_failSound: {fileID: 0}
-  m_ActivateSound: {fileID: 0}
-  m_missle: {fileID: 3547568647566114124, guid: 86d3599898d2b8e428bb184699ec170a,
+  m_Missle: {fileID: 3547568647566114124, guid: 86d3599898d2b8e428bb184699ec170a,
     type: 3}
-  m_damage: 0
-  m_speed: 0
-  m_lifetime: 0
+  m_Speed: 10
+  m_Range: 5

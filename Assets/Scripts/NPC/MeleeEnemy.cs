@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
-    public float m_Damage;
-    public override void Attack()
+    [Header("MeleeEnemy Options")]
+    public List<string> m_AttackNames = new List<string>();
+    protected override void Attack()
     {
-
+        m_Animator.Play(m_AttackNames[Random.Range(0, m_AttackNames.Count)]);
     }
 }

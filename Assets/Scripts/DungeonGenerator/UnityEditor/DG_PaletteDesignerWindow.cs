@@ -102,11 +102,27 @@ public class DG_PaletteDesignerWindow : EditorWindow
             //Mark That Room Asset As Dirty So That All Changes Are Saved
             EditorUtility.SetDirty(currentRoom);
             //Create A New Gameobject With All Of The Objects Inside The Bounds Of The Room Volume
-            GameObject gameObject = CreateObjectFromTransformData(roomVolumes[i].GetRoomGameObjects(), roomVolumes[i].transform.position);
+            roomVolumes[i].CompileRoomData();
+            GameObject gameObject = CreateObjectFromTransformData(roomVolumes[i].GetRoomObjects(), roomVolumes[i].transform.position);
             //Create A New Prefab Inside The Project Folder Using The New GameObject
             GameObject prefab = PrefabUtility.SaveAsPrefabAsset(gameObject, "Assets/DungeonData/" + EditorSceneManager.GetActiveScene().name + "/" + EditorSceneManager.GetActiveScene().name + "_Room_Prefab_" + i + ".prefab");
             //Destroy The GameObject In The Sceene To Remove Clutter
             DestroyImmediate(gameObject);
+
+            List<List<Transform>> doorObjects = roomVolumes[i].GetDoorObjects();
+
+
+            for (int j = 0; j < doorObjects.Count; j++)
+            {
+                GameObject doorObject = CreateObjectFromTransformData(doorObjects[j], roomVolumes[i].GetDoorVolumes()[j].transform.position);
+
+                GameObject doorPrefab = PrefabUtility.SaveAsPrefabAsset(doorObject, "Assets/DungeonData/" + EditorSceneManager.GetActiveScene().name + "/" + EditorSceneManager.GetActiveScene().name + "_Room_Prefab_" + i + "_Door_Prefab" + j + ".prefab");
+
+                currentRoom.m_DoorPrefabs.Add(doorPrefab);
+
+                DestroyImmediate(doorObject);
+            }
+
             //Set The Prefab Of The New Room Asset AS The New Prefab
             currentRoom.m_Prefab = prefab;
             //Add The Room To The Current Palette

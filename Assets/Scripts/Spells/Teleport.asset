@@ -12,13 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0c9dec327f3a84d971ace7e7ca5db9, type: 3}
   m_Name: Teleport
   m_EditorClassIdentifier: 
-  m_name: Teleport
-  m_sprite: {fileID: 0}
-  m_description: 
   m_castRate: 0
-  m_castSound: {fileID: 0}
-  m_failSound: {fileID: 0}
-  m_ActivateSound: {fileID: 0}
   m_Range: 10
   m_LayerMask:
     serializedVersion: 2
@@ -28,3 +22,5 @@ MonoBehaviour:
   m_TrapPrefab: {fileID: 2486803503095937869, guid: 22105df7847bc4743b00f564cd8dbe5c,
     type: 3}
   m_Debug: 0
+  m_ActiveTarget: {fileID: 2800000, guid: 6863cb863c5e6714ab3055aa763b3513, type: 3}
+  m_DisabledTarget: {fileID: 2800000, guid: 6de3b47b2af682e4aa77a376c1e7ae2d, type: 3}

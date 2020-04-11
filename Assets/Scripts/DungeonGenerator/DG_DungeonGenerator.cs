@@ -308,6 +308,14 @@ public class DG_DungeonGenerator : MonoBehaviour
             if (roomInstance.m_Room.m_Prefab != null)
             {
                 Instantiate(roomInstance.m_Room.m_Prefab, GridToWorldAxis(roomInstance.m_Position), Quaternion.Euler(Vector3.zero), transform);
+
+                for (int i = 0; i < roomInstance.m_Room.m_Doors.Count; i++)
+                {
+                    if (!roomInstance.m_ConnectedDoors.Contains(roomInstance.m_Room.m_Doors[i]))
+                    {
+                        Instantiate(roomInstance.m_Room.m_DoorPrefabs[i], GridToWorldAxis(roomInstance.m_Position) + GridToWorldAxis(roomInstance.m_Room.m_Doors[i].m_Position), Quaternion.Euler(Vector3.zero), transform);
+                    }
+                }
             }
         }
     }

@@ -5,24 +5,16 @@ using UnityEngine;
 public class Spell : ScriptableObject
 {
     [Header("Spell Attributes")]
-    public string m_name;
-    public Texture2D m_sprite;
-    public string m_description;
     public float m_castRate;
-    public AudioClip m_castSound;
-    public AudioClip m_failSound;
-    public AudioClip m_ActivateSound;
     protected float m_lastCastTime;
     protected Transform m_origin;
-
     public virtual void onPress() { }
     public virtual void onHold() { }
     public virtual void onRelease() { }
     public virtual void onEquip() { }
     public virtual void onUnequip() { }
-
-    public void setTransform(Transform t)
+    public void setTransform(Transform _transform)
     {
-        m_origin = t;
+        m_origin = _transform;
     }
 }
