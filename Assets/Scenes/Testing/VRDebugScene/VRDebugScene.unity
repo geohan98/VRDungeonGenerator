@@ -822,7 +822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &752541454
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3198,20 +3198,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 206306694, guid: 85384ab5cd860de4aaf49e081239cfb8, type: 3}
-      propertyPath: m_Spell_3
-      value: 
-      objectReference: {fileID: 11400000, guid: 54820fd4f6b330f4f9cb44f4a53e97b0,
-        type: 2}
-    - target: {fileID: 206306694, guid: 85384ab5cd860de4aaf49e081239cfb8, type: 3}
-      propertyPath: m_Spell_4
-      value: 
-      objectReference: {fileID: 11400000, guid: 04b0b696f6d6d6d4c97c152858212bca,
-        type: 2}
-    - target: {fileID: 206306694, guid: 85384ab5cd860de4aaf49e081239cfb8, type: 3}
-      propertyPath: m_Debug
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6364328527560021273, guid: 85384ab5cd860de4aaf49e081239cfb8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3271,16 +3257,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6364328527560295649, guid: 85384ab5cd860de4aaf49e081239cfb8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804563865593716214, guid: 85384ab5cd860de4aaf49e081239cfb8,
-        type: 3}
-      propertyPath: m_Debug
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85384ab5cd860de4aaf49e081239cfb8, type: 3}

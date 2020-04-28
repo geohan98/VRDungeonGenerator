@@ -67,12 +67,17 @@ public class TrapSpell : Spell
         {
             if (m_TrapPrefab != null)
             {
-                Instantiate(m_TrapPrefab, m_hitPos, Quaternion.identity, null);
+                if (Time.time - m_lastCastTime >= m_CooldownTime)
+                {
+                    Instantiate(m_TrapPrefab, m_hitPos, Quaternion.identity, null);
+                    m_lastCastTime = Time.time;
+                }
             }
         }
     }
     public override void onEquip()
     {
+        m_lastCastTime = Time.time;
         if (m_TargetPrefab != null && m_target == null)
         {
             m_target = Instantiate(m_TargetPrefab, Vector3.zero, Quaternion.identity, null);

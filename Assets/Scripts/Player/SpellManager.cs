@@ -14,6 +14,8 @@ public class SpellManager : MonoBehaviour
     [Header("Spell Manager Scene")]
     public Transform m_RightHandTransform;
     public Transform m_LeftHandTransform;
+    public CooldownRingControl m_RightRing;
+    public CooldownRingControl m_LeftRing;
     #endregion
     #region Private Variables
     [SerializeField] private Spell m_LeftHandSpell;
@@ -43,6 +45,20 @@ public class SpellManager : MonoBehaviour
                 m_LeftHandSpell.onRelease();
             }
             m_LeftHandLastUpdateValue = InputManager.s_Instance.m_triggerPositionLeft;
+
+            if (m_LeftRing)
+            {
+                m_LeftRing.m_Alpha = m_LeftHandSpell.getCooldownAlpha();
+                m_LeftRing.m_SpellEquipped = true;
+            }
+
+        }
+        else
+        {
+            if (m_LeftRing)
+            {
+                m_LeftRing.m_SpellEquipped = false;
+            }
         }
         if (m_RightHandSpell)
         {
@@ -63,6 +79,21 @@ public class SpellManager : MonoBehaviour
                 m_RightHandSpell.onRelease();
             }
             m_RightHandLastUpdateValue = InputManager.s_Instance.m_triggerPositionRight;
+
+
+
+            if (m_RightRing)
+            {
+                m_RightRing.m_SpellEquipped = true;
+                m_RightRing.m_Alpha = m_RightHandSpell.getCooldownAlpha();
+            }
+        }
+        else
+        {
+            if (m_RightRing)
+            {
+                m_RightRing.m_SpellEquipped = false;
+            }
         }
     }
     #endregion
