@@ -24,6 +24,14 @@
          ],
          "poses" : [
             {
+               "output" : "none",
+               "path" : "/user/hand/left/pose/base"
+            },
+            {
+               "output" : "none",
+               "path" : "/user/hand/right/pose/base"
+            },
+            {
                "output" : "/actions/default/in/pose",
                "path" : "/user/hand/left/pose/raw"
             },
@@ -34,12 +42,16 @@
          ],
          "skeleton" : [
             {
-               "output" : "/actions/default/in/skeletonlefthand",
-               "path" : "/user/hand/left/input/skeleton/left"
+               "output" : "/actions/default/in/skeletonrighthand",
+               "path" : "/user/hand/left/input/skeleton/right"
             },
             {
                "output" : "/actions/default/in/skeletonrighthand",
                "path" : "/user/hand/right/input/skeleton/right"
+            },
+            {
+               "output" : "/actions/default/in/skeletonlefthand",
+               "path" : "/user/hand/left/input/skeleton/left"
             }
          ],
          "sources" : [
@@ -61,6 +73,36 @@
             {
                "inputs" : {
                   "click" : {
+                     "output" : "/actions/default/in/clickmenu"
+                  },
+                  "pull" : {
+                     "output" : "/actions/default/in/triggerposition"
+                  }
+               },
+               "mode" : "trigger",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/backmenu"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/grip"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/backmenu"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/grip"
+            },
+            {
+               "inputs" : {
+                  "click" : {
                      "output" : "/actions/default/in/touchpadpress"
                   },
                   "position" : {
@@ -75,15 +117,9 @@
             },
             {
                "inputs" : {
-                  "pull" : {
-                     "output" : "/actions/default/in/triggerposition"
-                  }
-               },
-               "mode" : "trigger",
-               "path" : "/user/hand/left/input/trigger"
-            },
-            {
-               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/clickmenu"
+                  },
                   "pull" : {
                      "output" : "/actions/default/in/triggerposition"
                   }

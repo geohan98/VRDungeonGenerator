@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#if (UNITY_EDITOR) 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -47,3 +48,4 @@ public class DG_DungeonGeneratorEditor : Editor
         DrawDefaultInspector();
     }
 }
+#endif

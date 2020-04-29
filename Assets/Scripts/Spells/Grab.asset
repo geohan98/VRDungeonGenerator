@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505f127770477cd4e8770845173c9713, type: 3}
   m_Name: Grab
   m_EditorClassIdentifier: 
-  m_castRate: 0
+  m_CooldownTime: 1
   m_Range: 25
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 4096
-  m_Debug: 0
+    m_Bits: 12288
+  m_Debug: 1

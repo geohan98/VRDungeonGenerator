@@ -22,7 +22,7 @@ public class Push : Spell
         RaycastHit raycast;
         if (Physics.Raycast(m_origin.position, m_origin.forward, out raycast, m_Range, m_RaycastMask))
         {
-            if (raycast.collider.gameObject.layer == 12 && raycast.collider.gameObject.GetComponent<Rigidbody>())
+            if ((raycast.collider.gameObject.layer == 12 || raycast.collider.gameObject.layer == 13) && raycast.collider.gameObject.GetComponent<Rigidbody>())
             {
                 Target = raycast.collider.gameObject;
                 TargetRigidbody = Target.GetComponent<Rigidbody>();

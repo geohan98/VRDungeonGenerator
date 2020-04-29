@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361537ef76b96084ba1ada0b948b9cbc, type: 3}
   m_Name: Push
   m_EditorClassIdentifier: 
-  m_castRate: 0
+  m_CooldownTime: 0
   m_Range: 20
-  m_Force: 10
+  m_Force: 50
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 12288
   m_Debug: 0

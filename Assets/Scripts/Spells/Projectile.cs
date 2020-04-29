@@ -61,6 +61,7 @@ public class Projectile : MonoBehaviour
             {
                 Log("Projectile Hit NPC");
                 gameObject.SetActive(false);
+                other.gameObject.GetComponent<Enemy>().Hit();
             }
             if (other.gameObject.layer == 10)
             {

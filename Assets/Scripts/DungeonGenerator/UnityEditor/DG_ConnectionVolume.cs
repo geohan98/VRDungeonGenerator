@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿#if (UNITY_EDITOR) 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.SceneManagement;
+
 
 [SelectionBase]
 public class DG_ConnectionVolume : MonoBehaviour
@@ -34,3 +36,4 @@ public class DG_ConnectionVolume : MonoBehaviour
         Gizmos.DrawWireCube(transform.position + new Vector3(0.0f, 0.5f, 0.0f), new Vector3(1, m_Height, 1));
     }
 }
+#endif

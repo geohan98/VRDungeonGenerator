@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     #region Public Variables
     public static PlayerManager s_Instance;
     public AudioSource m_2DAudioSource;
+    public Transform m_Camera;
     public bool m_Debug = true;
     #endregion
 

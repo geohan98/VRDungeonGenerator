@@ -20,10 +20,12 @@ public class Grab : Spell
     #region Public Functions
     public override void onPress()
     {
+
         RaycastHit raycast;
         if (Physics.Raycast(m_origin.position, m_origin.forward, out raycast, m_Range, m_RaycastMask))
         {
-            if (raycast.collider.gameObject.layer == 12 && raycast.collider.gameObject.GetComponent<Rigidbody>())
+            Log("Hit");
+            if ((raycast.collider.gameObject.layer == 12 || raycast.collider.gameObject.layer == 13) && raycast.collider.gameObject.GetComponent<Rigidbody>())
             {
                 m_Target = raycast.collider.gameObject;
                 m_TargetRigidbody = m_Target.GetComponent<Rigidbody>();

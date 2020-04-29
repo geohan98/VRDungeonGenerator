@@ -21,8 +21,8 @@ public class RagdollController : MonoBehaviour
     #region Unity Functions
     private void Awake()
     {
-        m_Root = GetComponent<Rigidbody>();
-        m_AnimController = GetComponent<Animator>();
+        if (!m_Root) m_Root = GetComponent<Rigidbody>();
+        if (!m_AnimController) m_AnimController = GetComponent<Animator>();
         m_Rigidbodies = new List<Rigidbody>();
         m_Colliders = new List<Collider>();
         GetRigidBodies(transform);

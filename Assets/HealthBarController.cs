@@ -6,10 +6,10 @@ public class HealthBarController : MonoBehaviour
 {
     [Header("HealthBarController Options")]
     public Transform m_Bar;
-    //public Pawn m_Pawn;
+    public Enemy m_Enemy;
 
     private void Update()
     {
-        //m_Bar.transform.localScale = new Vector3(m_Pawn.GetHealthPercent(), 1, 1);
+        m_Bar.transform.localScale = new Vector3(m_Enemy.GetHealthPercent(), 1, 1);
     }
 }
