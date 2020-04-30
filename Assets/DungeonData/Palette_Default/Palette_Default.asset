@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3588f19ebb6c58d46a25a9a249ba7d04, type: 3}
+  m_Name: Palette_Default
+  m_EditorClassIdentifier: 
+  m_Rooms:
+  - {fileID: 11400000, guid: 4f05cba6ee583f24787d74056be72635, type: 2}
+  - {fileID: 11400000, guid: da5039c766d613b419550ff0e02d9fe9, type: 2}
+  - {fileID: 11400000, guid: d7658aada7932d84e99add7991144fac, type: 2}
+  - {fileID: 11400000, guid: 47f069a914fdb2d4eb55ff6f5297f365, type: 2}
+  m_ConnectionPrefab: {fileID: 6089391526678345181, guid: ef8e05dc9537a33498ed4d41fadf9590,
+    type: 3}

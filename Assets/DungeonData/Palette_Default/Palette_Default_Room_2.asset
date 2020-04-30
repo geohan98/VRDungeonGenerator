@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c9a9de4fa37c042b15c0d0dad77545, type: 3}
+  m_Name: Palette_Default_Room_2
+  m_EditorClassIdentifier: 
+  m_Size: {x: 7, y: 7}
+  m_Doors:
+  - m_Position: {x: 0, y: 3}
+    m_Direction: 1
+  - m_Position: {x: -3, y: 0}
+    m_Direction: 4
+  - m_Position: {x: 3, y: 0}
+    m_Direction: 2
+  - m_Position: {x: 0, y: -3}
+    m_Direction: 3
+  m_EmptyCells: []
+  m_Prefab: {fileID: 3029613394974732550, guid: 75309904e19daaa4ab8e42da69b77cf1,
+    type: 3}
+  m_DoorPrefabs:
+  - {fileID: 8653346809052077986, guid: ac33c39a049e04f4fa5cc338f242363e, type: 3}
+  - {fileID: 3618500679046302172, guid: 96a30e239c4791f45816b9266408af4c, type: 3}
+  - {fileID: 3285901876408524946, guid: 75aa84a2c1e5fe64490007ffda691adf, type: 3}
+  - {fileID: 1779919682501856210, guid: 4b617452b3bdef84eb1699544fce2cce, type: 3}

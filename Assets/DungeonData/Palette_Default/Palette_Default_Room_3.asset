@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c9a9de4fa37c042b15c0d0dad77545, type: 3}
+  m_Name: Palette_Default_Room_3
+  m_EditorClassIdentifier: 
+  m_Size: {x: 5, y: 5}
+  m_Doors:
+  - m_Position: {x: 2, y: 1}
+    m_Direction: 2
+  - m_Position: {x: 2, y: -1}
+    m_Direction: 2
+  - m_Position: {x: 1, y: 2}
+    m_Direction: 1
+  - m_Position: {x: 0, y: 2}
+    m_Direction: 1
+  - m_Position: {x: -2, y: 1}
+    m_Direction: 4
+  - m_Position: {x: -1, y: 2}
+    m_Direction: 1
+  - m_Position: {x: -1, y: -2}
+    m_Direction: 3
+  - m_Position: {x: 2, y: 0}
+    m_Direction: 2
+  - m_Position: {x: 1, y: -2}
+    m_Direction: 3
+  - m_Position: {x: -2, y: 0}
+    m_Direction: 4
+  - m_Position: {x: 0, y: -2}
+    m_Direction: 3
+  - m_Position: {x: -2, y: -1}
+    m_Direction: 4
+  m_EmptyCells: []
+  m_Prefab: {fileID: 2575992823073912492, guid: 3faa881ab7089a948ab91a9c2dc358cd,
+    type: 3}
+  m_DoorPrefabs:
+  - {fileID: 1552427635451982746, guid: 05d9991ffa8db4d4aa76cd6a1ae4bda7, type: 3}
+  - {fileID: 3150595088910383885, guid: 015f7cff4d8cae54191ac4b05ca7316f, type: 3}
+  - {fileID: 5595240021607384769, guid: b74649a7b6f2d3f40b0130f52adc7eb6, type: 3}
+  - {fileID: 4505088784427143034, guid: a4d48960db597764f8dff8df359b920e, type: 3}
+  - {fileID: 6777876918934464286, guid: 8912fd3151000e744baae402ade52b78, type: 3}
+  - {fileID: 8019518177074132676, guid: c22da97a8c684eb45bbf54f6da6f3251, type: 3}
+  - {fileID: 7599376706130326432, guid: 8fe5e796e86589b419525067cd466a88, type: 3}
+  - {fileID: 2182255078782151048, guid: b61bcac4d46ed5d4ea4b6bf0aab36261, type: 3}
+  - {fileID: 7053264033315819941, guid: 6225c793481a24c4d9fa1aed4c3277f2, type: 3}
+  - {fileID: 7432283517742123601, guid: d5b10720114ec004e95d4fa8a87d11b9, type: 3}
+  - {fileID: 3985104900841985476, guid: 605b5b163b0f5824fa98b08fc76be140, type: 3}
+  - {fileID: 903044963977266528, guid: d4e2b034076948d468db51426586e0b2, type: 3}

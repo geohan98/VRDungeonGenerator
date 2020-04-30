@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c9a9de4fa37c042b15c0d0dad77545, type: 3}
+  m_Name: Palette_Default_Room_0
+  m_EditorClassIdentifier: 
+  m_Size: {x: 5, y: 5}
+  m_Doors:
+  - m_Position: {x: 2, y: 1}
+    m_Direction: 2
+  - m_Position: {x: -2, y: 1}
+    m_Direction: 4
+  - m_Position: {x: -1, y: -2}
+    m_Direction: 3
+  - m_Position: {x: 1, y: 2}
+    m_Direction: 1
+  - m_Position: {x: 0, y: 2}
+    m_Direction: 1
+  - m_Position: {x: -2, y: -1}
+    m_Direction: 4
+  - m_Position: {x: -2, y: 0}
+    m_Direction: 4
+  - m_Position: {x: -1, y: 2}
+    m_Direction: 1
+  m_EmptyCells: []
+  m_Prefab: {fileID: 7944525179570425879, guid: a53d87bf293a9ff489c731630f4d3ac8,
+    type: 3}
+  m_DoorPrefabs:
+  - {fileID: 906353778305784262, guid: c49cbd1db5e583b4ebc22fecce11cc70, type: 3}
+  - {fileID: 2965263911574384721, guid: 9bcb471a20a62924896e88f685c2f4ac, type: 3}
+  - {fileID: 6139768588241065176, guid: 466fdf7acf8e59f4b80cc8db255fe4f5, type: 3}
+  - {fileID: 8734723294435201768, guid: 1635a9487ec3cbf45bc0124a0e2af60a, type: 3}
+  - {fileID: 4170340293906163231, guid: 7307fbcc0c238a34ea2635b57f6a5b1c, type: 3}
+  - {fileID: 8057854458105045487, guid: e054456fc43a0dd4caa89768d6828f14, type: 3}
+  - {fileID: 7760761766191069705, guid: 7cdb733326fbd3f4c82d1350e40369c7, type: 3}
+  - {fileID: 4581090997808757292, guid: ce918684e29b927449556fdc1e16fbcc, type: 3}
