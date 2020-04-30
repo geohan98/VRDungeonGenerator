@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     public bool m_AlignWithVelocity = false;
     public bool m_HideOnHit = true;
     public GameObject m_HitParticle;
+    public bool m_PlayerMade = false;
     public bool m_Debug = true;
     #endregion
 
@@ -50,13 +51,8 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Log("Collsion Detected");
-        if (other.gameObject.layer == 8 || other.gameObject.layer == 9 || other.gameObject.layer == 10)
+        if (other.gameObject.layer == 9 || other.gameObject.layer == 10)
         {
-            if (other.gameObject.layer == 8)
-            {
-                Log("Projectile Hit Player");
-                gameObject.SetActive(false);
-            }
             if (other.gameObject.layer == 9)
             {
                 Log("Projectile Hit NPC");
@@ -78,6 +74,21 @@ public class Projectile : MonoBehaviour
             }
             Destroy(gameObject, 5.0f);
             m_hit = true;
+        }
+        else if (other.gameObject.layer == 8)
+        {
+            if (!m_PlayerMade)
+            {
+                Log("Projectile Hit Player");
+                gameObject.SetActive(false);
+                other.gameObject.transform.parent.gameObject.GetComponent<PlayerManager>().Hit();
+                if (m_HitParticle)
+                {
+                    Instantiate(m_HitParticle, transform.position, Quaternion.identity, null);
+                }
+                Destroy(gameObject, 5.0f);
+                m_hit = true;
+            }
         }
     }
     #endregion

@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
                 if (TargetInSight())
                 {
                     Log("In Sight");
-                    m_Target = PlayerManager.s_Instance.transform;
+                    m_Target = PlayerManager.s_Instance.m_Camera.transform;
                 }
             }
             if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Locomotion"))
@@ -118,6 +118,14 @@ public class Enemy : MonoBehaviour
 
         return current / max;
     }
+    public virtual void Die()
+    {
+        m_Alive = false;
+        m_Agent.enabled = false;
+        if (m_RagdollController) m_RagdollController.m_Ragdoll = true;
+        LevelController.s_Instance.m_EnemyCount--;
+        Destroy(gameObject, 30.0f);
+    }
     #endregion
 
     #region Protected Functions
@@ -127,13 +135,6 @@ public class Enemy : MonoBehaviour
         m_Agent.SetDestination(_position);
     }
     protected virtual void Attack() { }
-    protected virtual void Die()
-    {
-        m_Alive = false;
-        m_Agent.enabled = false;
-        if (m_RagdollController) m_RagdollController.m_Ragdoll = true;
-        Destroy(gameObject, 30.0f);
-    }
     protected void Stop()
     {
         m_Agent.isStopped = true;

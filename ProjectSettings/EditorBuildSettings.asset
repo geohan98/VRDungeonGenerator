@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Release/MenuScene.unity
     guid: 5891ec9328fe51944b1e7c768f243738
+  - enabled: 1
+    path: Assets/Scenes/Testing/VRDebugScene/VRDebugScene.unity
+    guid: cf2aed09402ebe94ba21fe343a179937
   m_configObjects: {}
