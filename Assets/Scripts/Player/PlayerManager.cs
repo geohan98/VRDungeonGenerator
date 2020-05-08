@@ -61,7 +61,7 @@ public class PlayerManager : MonoBehaviour
         }
         if (m_CapsuleCollider)
         {
-            Vector3 position = m_Camera.position - Vector3.up * ((m_CapsuleCollider.height / 2.0f) - m_CapsuleCollider.radius);
+            Vector3 position = m_Camera.position - Vector3.up * ((m_CapsuleCollider.height / 2.0f) * transform.localScale.y - m_CapsuleCollider.radius * transform.localScale.y);
             m_CapsuleCollider.gameObject.transform.position = position;
         }
     }

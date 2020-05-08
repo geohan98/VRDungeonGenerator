@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2959521798634670488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 7811741681635376795}
   m_Father: {fileID: 0}
@@ -52,6 +52,7 @@ MonoBehaviour:
   m_AlignWithVelocity: 1
   m_HideOnHit: 0
   m_HitParticle: {fileID: 0}
+  m_PlayerMade: 0
   m_Debug: 1
 --- !u!54 &2959521798634670470
 Rigidbody:

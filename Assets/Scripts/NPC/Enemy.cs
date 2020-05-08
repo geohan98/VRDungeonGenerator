@@ -149,6 +149,7 @@ public class Enemy : MonoBehaviour
     }
     protected bool TargetInSight()
     {
+        Debug.DrawRay(transform.position + Vector3.up * m_EyeHeight, PlayerManager.s_Instance.m_Camera.transform.position - transform.position, Color.red, 0.4f);
         return !Physics.Raycast(transform.position + Vector3.up * m_EyeHeight, PlayerManager.s_Instance.m_Camera.transform.position - transform.position, Vector3.Distance(transform.position + Vector3.up * m_EyeHeight, PlayerManager.s_Instance.m_Camera.transform.position), m_SightMask);
     }
     #endregion

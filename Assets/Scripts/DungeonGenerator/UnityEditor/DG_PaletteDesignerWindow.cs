@@ -1,4 +1,4 @@
-﻿#if (UNITY_EDITOR) 
+﻿#if (UNITY_EDITOR)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,17 +7,17 @@ using UnityEditor.SceneManagement;
 
 public class DG_PaletteDesignerWindow : EditorWindow
 {
-    #region Private Variables
+#region Private Variables
     private Object roomPrefab;
     private Object doorPrefab;
     private Object emptyCellPrefab;
     private Object connectionPrefab;
-    #endregion
+#endregion
 
-    #region Unity Functions
-    #endregion
+#region Unity Functions
+#endregion
 
-    #region Public Functions
+#region Public Functions
     [MenuItem("Dungeon Generator/Palette Designer")]
     public static void ShowWindow()
     {
@@ -25,9 +25,9 @@ public class DG_PaletteDesignerWindow : EditorWindow
         window.minSize = new Vector2(325.0f, 300.0f);
         window.ShowTab();
     }
-    #endregion
+#endregion
 
-    #region Private Functions
+#region Private Functions
     private void OnGUI()
     {
         GUIStyle style = new GUIStyle();
@@ -195,6 +195,6 @@ public class DG_PaletteDesignerWindow : EditorWindow
     {
         Debug.Log("[Palette Designer][Warning]:" + _msg);
     }
-    #endregion
+#endregion
 }
 #endif
