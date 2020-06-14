@@ -1,3 +1,18 @@
 # VR Dungeon Generator
-For my final year project / dissertation I decided to investigate procedural level generation, to do this I built a dungeon generator in the Unity Engine that can be explored in virtual reality. The dungeon generator works by connecting randomly selected pre-defined rooms, these rooms can be designed using the tools I also made for the project.
+For my final year project / dissertation I decided to investigate procedural level generation, to do this I built a dungeon generator in the Unity Engine that can be explored in virtual reality. This project was completed over the 8 months of my final year, the work was done independent of my lectures and computer lab practical’s, I did have to update my project supervisor on the progress of the project during 10 meetings that would happen over the project.
+
+# Skills Used During This Project
+* Unity
+* C#
+* VR Development
+* Steam VR Plugin
+* Tool Development
+* Scriptable Objects
+* Asset Database
+* Creating & Saving New Prefabs & Scriptable Objects Through C#
+* Navmesh & Basic AI
+* Animation Controller & Animation Events
+
+
+
 
