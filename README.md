@@ -1,5 +1,5 @@
 # VR Dungeon Generator
-For my final year project / dissertation I decided to investigate procedural level generation, to do this I built a dungeon generator in the Unity Engine that can be explored in virtual reality. This project was completed over the 8 months of my final year, the work was done independently of my lectures and computer lab practicals, I updated my supervisor on the progress of the project during 10 meetings that occurred during the project.
+For my final year project / dissertation I decided to investigate procedural level generation, to do this I built a dungeon generator in the Unity Engine that can be explored in virtual reality. This project was completed over the 8 months of my final year, the work was done independently of my lectures and computer lab practicals.
 # Dungeon Generation of 100 Rooms with Lights and Colliders, Real Time
 ![Dungeon Generation GIF](https://raw.githubusercontent.com/geohan98/geohan98.github.io/master/Images/g0RyJadKTs.gif)
 # Room Design Tools Inside Unity
