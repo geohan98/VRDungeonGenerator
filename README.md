@@ -13,9 +13,9 @@ For my final year project / dissertation I decided to investigate procedural lev
 * Navmesh & Basic AI
 * Animation Controller & Animation Events
 
-# Dungeon Generation of 100 Rooms With Lights and Colliders Real Time
+# Dungeon Generation of 100 Rooms with Lights and Colliders Real Time
 ![Dungeon Generation GIF](https://raw.githubusercontent.com/geohan98/geohan98.github.io/master/Images/g0RyJadKTs.gif)
-# Room Design Using Tools Inside Unity
+# Room Design Tools Inside Unity
 ![Room Design](https://raw.githubusercontent.com/geohan98/geohan98.github.io/master/Images/Unity_KL1eGaUMI2.png)
 
 
