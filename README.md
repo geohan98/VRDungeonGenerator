@@ -16,7 +16,7 @@ For my final year project / dissertation I decided to investigate procedural lev
 # Dungeon Generation of 100 Rooms With Lights and Colliders Real Time
 ![Dungeon Generation GIF](https://raw.githubusercontent.com/geohan98/geohan98.github.io/master/Images/g0RyJadKTs.gif)
 # Room Design Using Tools Inside Unity
-![Dungeon Generation GIF](https://raw.githubusercontent.com/geohan98/geohan98.github.io/master/Images/Unity_KL1eGaUMI2.png)
+![Room Design](https://raw.githubusercontent.com/geohan98/geohan98.github.io/master/Images/Unity_KL1eGaUMI2.png)
 
 
 
